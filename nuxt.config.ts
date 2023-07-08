@@ -30,6 +30,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			ENDPOINT_URL: process.env.ENDPOINT_URL,
+			PAYSTACK_PUBLICKEY: process.env.PAYSTACK_PUBLICKEY,
 		},
 	},
 

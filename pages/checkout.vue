@@ -61,7 +61,7 @@ async function verifyPayment(response) {
 
 function makePayment() {
 	const handler = PaystackPop.setup({
-		key: "pk_test_7bdae6525665b367982c4058c109e38f4e60b11f",
+		key: `${config.public.PAYSTACK_PUBLICKEY}`,
 		email: deliveryInformation.value.email,
 		amount: cart.estimatedTotal * 100,
 		currency: "NGN",
