@@ -20,11 +20,9 @@
 				<Rating />
 			</div>
 			<p class="text-[2rem] text-customBlack flex items-center gap-x-4">
-				<span>{{ product.price }}</span>
-				<span
-					v-if="product?.discount_price"
-					class="text-red-500 line-through"
-					>{{ product?.discount_price }}</span
+				<span>&#8358;{{ product?.price }}</span>
+				<span v-if="product?.discount_price" class="text-red-500 line-through"
+					>&#8358;{{ product?.discount_price }}</span
 				>
 			</p>
 			<form class="w-full" @submit.prevent="addProductToCart">
@@ -33,11 +31,13 @@
 					type="submit"
 					class="w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack text-[2rem] font-semibold text-customBlack transition-all duration-200 hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-80"
 					:disabled="isAddingToCart"
+					id="add-to-cart-btn"
 				>
 					{{ isAddingToCart ? "Adding to cart" : "Add to bag" }}
 				</button>
 				<button
 					v-if="!isAdmin && productInCart"
+					id="added-to-bag-display"
 					type="button"
 					class="w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack text-[2rem] bg-customBlack font-semibold text-white transition-all duration-200 pointer-events-none"
 				>

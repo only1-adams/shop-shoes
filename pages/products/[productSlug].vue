@@ -24,14 +24,14 @@
 						class="mt-7 text-customBlack font-bold text-[2rem] flex items-center gap-x-5"
 					>
 						<span>
-							$
+							&#8358;
 							{{ product.price.toLocaleString() }}
 						</span>
 						<span
 							v-if="product.discount_price"
 							class="text-red-500 font-medium line-through"
 						>
-							${{ product.discount_price.toLocaleString() }}
+							&#8358;{{ product.discount_price.toLocaleString() }}
 						</span>
 					</p>
 					<p class="mt-7 text-2xl text-customBlack">

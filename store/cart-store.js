@@ -1,3 +1,5 @@
+import { defineStore } from "pinia";
+import { ref, computed, reactive } from "vue";
 const cartStore = defineStore("user-cart", () => {
 	const userCart = reactive({
 		items: [],

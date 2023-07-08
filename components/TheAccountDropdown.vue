@@ -17,7 +17,7 @@
 				/>
 				<path
 					d="M0.750977 19.1182C0.821282 15.0369 4.15171 11.75 8.24984 11.75C12.3481 11.75 15.6786 15.0371 15.7487 19.1185C13.4659 20.166 10.9262 20.75 8.25016 20.75C5.57384 20.75 3.03394 20.1659 0.750977 19.1182Z"
-					stroke="white"
+					:stroke="props.iconStrokeColor"
 					stroke-width="1.5"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -71,12 +71,16 @@
 import authStore from "~/store/auth-store";
 import rootStore from "~/store/root-store";
 
+const props = defineProps(["iconStrokeColor"]);
+
 const config = useRuntimeConfig();
 const { isOpen, toggle, close } = useToggler();
 const dropdownContainerRef = ref(null);
 onClickOutside(dropdownContainerRef, () => {
 	close();
 });
+
+
 
 const store = authStore();
 const root = rootStore();

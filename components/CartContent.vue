@@ -181,9 +181,19 @@ const cartItems = computed(() => store.userCart.items);
 const totalAmount = computed(() => store.userCart.totalAmount);
 const estimatedTotal = computed(() => store.estimatedTotal);
 
-onMounted(() => {
+function setEstimatedTotal() {
 	store.estimatedTotal = Math.round(
 		totalAmount.value + VAT.value + shippingFee.value
 	);
+}
+
+onMounted(() => {
+	setEstimatedTotal();
+});
+
+watch(cartItems, async (newValue) => {
+	if (newValue) {
+		setEstimatedTotal();
+	}
 });
 </script>

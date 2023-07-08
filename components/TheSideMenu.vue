@@ -38,11 +38,11 @@
 			</svg>
 		</span>
 		<Teleport to="body">
-			<SideMenuContent :isOpen="open" />
+			<SideMenuContent @close="close" :isOpen="open" />
 		</Teleport>
 	</div>
 </template>
 
 <script setup>
-const { isOpen: open, toggle } = useToggler();
+const { isOpen: open, toggle, close } = useToggler();
 </script>

@@ -101,8 +101,8 @@
 										product.product.title
 									}}</span>
 									<div class="mt-4 flex items-center gap-x-5">
-										<span class="text-customBlack text-[1.7rem]">{{
-											product.price
+										<span class="text-customBlack text-[1.7rem]">&#8358;{{
+											product.price.toLocaleString()
 										}}</span>
 									</div>
 								</div>

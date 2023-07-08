@@ -1,3 +1,6 @@
+import { defineStore } from "pinia";
+import { ref, computed, reactive } from "vue";
+
 const profileStore = defineStore("profileStore", () => {
 	const userDetails = reactive({
 		name: null,

@@ -12,9 +12,9 @@
 			<TheSideMenu />
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="isLoggedIn" />
-				<TheCart />
-				<TheAccountDropdown v-if="isLoggedIn" />
-				<NotAuthAccountDropdown v-if="!isLoggedIn" />
+				<TheCart icon-stroke-color="white" />
+				<TheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
+				<NotAuthAccountDropdown v-if="!isLoggedIn" icon-stroke-color="white" />
 			</div>
 		</div>
 	</header>

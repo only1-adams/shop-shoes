@@ -1,3 +1,6 @@
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
+
 const rootStore = defineStore("rootStore", () => {
 	const hasError = {
 		status: ref(false),

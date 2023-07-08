@@ -270,7 +270,7 @@ async function addAddress() {
 		close();
 		root.displayPopup(data.message, "success");
 	} catch (error) {
-		root.displayPopup(error.data.message || error.message, "error");
+		root.displayPopup(error?.data?.message || error?.message, "error");
 		isAdding.value = false;
 	}
 }
