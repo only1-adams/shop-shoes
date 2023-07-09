@@ -7,7 +7,7 @@
 					<div class="flex gap-x-7 pb-5">
 						<img
 							class="w-[91px] h-[84px] object-cover"
-							src="images/cart-image.png"
+							:src="`https://s3.amazonaws.com/myklefblog-bucket/${item.product.image}`"
 							alt=""
 						/>
 						<div>
