@@ -13,7 +13,7 @@
 			<div class="w-full md:w-[80%] lg:w-1/2">
 				<img
 					class="h-[332px] md:h-[442px] object-cover w-full"
-					src="images/bestselling.png"
+					src="/images/bestselling.png"
 					alt=""
 				/>
 			</div>
