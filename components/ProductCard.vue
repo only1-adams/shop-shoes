@@ -5,7 +5,7 @@
 		<NuxtLink :to="{ path: `/products/${product?.slug}` }">
 			<NuxtImg
 				class="h-[300px] lg:h-[300px] xl:h-[348px] object-cover w-full min-[1440px]:w-full"
-				:src="`http://localhost:8080/${product?.image}`"
+				:src="`https://s3.amazonaws.com/myklefblog-bucket/${product?.image}`"
 				:alt="product?.title"
 				loading="lazy"
 			/>

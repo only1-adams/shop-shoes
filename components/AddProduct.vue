@@ -133,6 +133,7 @@ import authStore from "~/store/auth-store";
 const config = useRuntimeConfig();
 const root = rootStore();
 const auth = authStore();
+const emit = defineEmits(["isCreating"]);
 
 const { data: categories } = await useFetch(
 	`${config.public.ENDPOINT_URL}products/category`
@@ -144,42 +145,84 @@ const productData = reactive({
 	description: "",
 	price: "",
 	discount_price: null,
-	image: null,
+	image: "",
 });
+
+const productImageData = ref(null);
 
 function getImage(event) {
 	const file = [...event.target.files][0];
-	productData.image = file;
+	const blob = new Blob([file], { type: file.type });
+	const fileTypeAndExtension = file.type.split("/");
+	const fileType = fileTypeAndExtension[0];
+	const fileExtension = fileTypeAndExtension[1];
+
+	productImageData.blob = blob;
+	productImageData.fileType = fileType;
+	productImageData.fileExtension = fileExtension;
 }
 
-function generateFormData() {
-	const formData = new FormData();
-
-	formData.append("category", productData.category);
-	formData.append("image", productData.image);
-	formData.append("title", productData.title);
-	formData.append("description", productData.description);
-	formData.append("price", productData.price);
-	if (productData.discount_price !== null) {
-		formData.append("discount_price", productData.discount_price);
+function generateProductData() {
+	const newProductData = {};
+	for (const key in productData) {
+		if (productData[key] !== null) {
+			newProductData[key] = productData[key];
+		}
 	}
 
-	return formData;
+	return newProductData;
+}
+
+async function getUploadPresignedUrl() {
+	try {
+		const data = await $fetch(
+			`${config.public.ENDPOINT_URL}products/upload/${productImageData?.fileType}/${productImageData?.fileExtension}`,
+			{
+				credentials: "include",
+				headers: {
+					"x-csrf-token": auth.csrf,
+				},
+			}
+		);
+		return data;
+	} catch (error) {
+		throw Error(
+			"An error occurred while creating the product, please try again"
+		);
+	}
+}
+
+async function uploadProductImage(url) {
+	try {
+		await $fetch(url, {
+			method: "PUT",
+			body: productImageData.blob,
+		});
+	} catch (error) {
+		throw Error(
+			"An error occurred while creating the product, please try again"
+		);
+	}
 }
 
 async function addProduct() {
 	try {
+		emit("isCreating", true);
+		const { key, url } = await getUploadPresignedUrl();
+		await uploadProductImage(url);
 		const data = await $fetch(`${config.public.ENDPOINT_URL}products/new`, {
 			method: "POST",
-			body: generateFormData(),
+			body: { ...generateProductData(), image: key },
 			credentials: "include",
 			headers: {
 				"x-csrf-token": auth.csrf,
 			},
 		});
 		root.displayPopup(data.message, "success");
-		navigateTo("/mgr");
+		emit("isCreating", false);
+		return navigateTo("/mgr");
 	} catch (error) {
+		emit("isCreating", false);
 		root.displayPopup(error.data.message || error.message, "error");
 	}
 }

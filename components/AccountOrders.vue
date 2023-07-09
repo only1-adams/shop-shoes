@@ -62,7 +62,7 @@
 								/>
 								<div>
 									<span class="text-[1.7rem] font-semibold">{{
-										product.product.title
+										product.product?.title
 									}}</span>
 									<div class="mt-4 flex items-center gap-x-5">
 										<span class="text-customBlack text-[1.7rem]">$23.45</span>
@@ -98,7 +98,7 @@
 								/>
 								<div>
 									<span class="text-[1.7rem] font-semibold">{{
-										product.product.title
+										product.product?.title
 									}}</span>
 									<div class="mt-4 flex items-center gap-x-5">
 										<span class="text-customBlack text-[1.7rem]">&#8358;{{

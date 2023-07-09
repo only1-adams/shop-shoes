@@ -24,8 +24,11 @@
 		</button>
 		<Teleport to="body">
 			<div
-				v-show="isOpen"
 				@click="close"
+				:class="{
+					'opacity-100 pointer-events-auto': isOpen,
+					'pointer-events-none opacity-0': !isOpen,
+				}"
 				class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
 			>
 				<CartContent @close="close" :isOpen="isOpen" />

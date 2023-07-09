@@ -10,7 +10,7 @@
 				<div class="w-full md:w-[80%] lg:w-1/2">
 					<NuxtImg
 						class="h-[300px] md:h-[466px] w-full object-cover"
-						:src="`${config.public.ENDPOINT_URL}${product.image}`"
+						:src="`https://s3.amazonaws.com/myklefblog-bucket/${product?.image}`"
 						loading="lazy"
 					/>
 				</div>
