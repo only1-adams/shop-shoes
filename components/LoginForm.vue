@@ -93,15 +93,15 @@ async function loginUser() {
 
 		store.authenticateUser(data.csrfToken, data.role);
 
+		isPending.value = false;
+		root.displayPopup("You are now logged in", "success");
+		emit("close");
+
 		if (data.role !== "admin") {
 			cart.cartWasUpdated = true;
 		} else {
 			await navigateTo("/mgr");
 		}
-
-		isPending.value = false;
-		root.displayPopup("You are now logged in", "success");
-		emit("close");
 	} catch (error) {
 		isPending.value = false;
 		const message = error.message;

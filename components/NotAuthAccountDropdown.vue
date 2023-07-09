@@ -26,73 +26,73 @@
 		</span>
 		<Teleport to="body">
 			<div
-				v-show="isOpen"
+				:class="{
+					'opacity-100 pointer-events-auto': isOpen,
+					'pointer-events-none opacity-0': !isOpen,
+				}"
 				@click="close"
 				class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
+			></div>
+			<div
+				:class="isOpen ? 'translate-x-0' : 'translate-x-[1000px]'"
+				class="w-full md:w-[500px] md:border-l-[1.5px] md:border-l-primary top-0 md:right-0 h-full overflow-auto bg-white fixed z-[5] p-8 transition-all duration-300"
 			>
-				<Teleport to="body">
-					<div
-						:class="isOpen ? 'translate-x-0' : 'translate-x-[1000px]'"
-						class="w-full md:w-[500px] md:border-l-[1.5px] md:border-l-primary top-0 md:right-0 h-full overflow-auto bg-white fixed z-[5] p-8 transition-all duration-300"
+				<TheAlertPopup
+					:show="store.showError"
+					:message="store.message"
+					type="error"
+				/>
+				<div class="flex items-center justify-end">
+					<span
+						@click="close"
+						class="cursor-pointer flex items-center justify-center w-[35px] h-[35px] rounded-full"
 					>
-						<TheAlertPopup
-							:show="store.showError"
-							:message="store.message"
-							type="error"
-						/>
-						<div class="flex items-center justify-end">
-							<span
-								@click="close"
-								class="cursor-pointer flex items-center justify-center w-[35px] h-[35px] rounded-full"
-							>
-								<svg
-									width="22"
-									height="22"
-									viewBox="0 0 22 22"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M1 21L21 1M1 1L21 21"
-										stroke="#0F172A"
-										stroke-width="1.5"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-									/>
-								</svg>
-							</span>
-						</div>
-						<div class="mt-12">
-							<p
-								class="text-[2rem] md:text-[2.5rem] font-extrabold text-customBlack"
-							>
-								SIGN IN OR CREATE AN ACCOUNT
-							</p>
-							<div
-								class="mt-12 w-full h-[50px] flex items-center overflow-hidden rounded-lg bg-primaryLight"
-							>
-								<span
-									@click="setCurrentTab('signin')"
-									:class="{
-										'bg-primary text-white': currentTab === 'signin',
-									}"
-									class="w-1/2 flex items-center justify-center h-full text-2xl font-medium cursor-pointer"
-									>Sign In</span
-								>
-								<span
-									@click="setCurrentTab('signup')"
-									:class="{
-										'bg-primary text-white': currentTab === 'signup',
-									}"
-									class="w-1/2 flex items-center justify-center h-full text-2xl font-medium cursor-pointer"
-									>Create Account</span
-								>
-							</div>
-							<LoginForm :currentTab="currentTab" @close="close" />
-							<SignupForm :currentTab="currentTab" @signedup="close" />
-						</div>
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 22 22"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M1 21L21 1M1 1L21 21"
+								stroke="#0F172A"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</span>
+				</div>
+				<div class="mt-12">
+					<p
+						class="text-[2rem] md:text-[2.5rem] font-extrabold text-customBlack"
+					>
+						SIGN IN OR CREATE AN ACCOUNT
+					</p>
+					<div
+						class="mt-12 w-full h-[50px] flex items-center overflow-hidden rounded-lg bg-primaryLight"
+					>
+						<span
+							@click="setCurrentTab('signin')"
+							:class="{
+								'bg-primary text-white': currentTab === 'signin',
+							}"
+							class="w-1/2 flex items-center justify-center h-full text-2xl font-medium cursor-pointer"
+							>Sign In</span
+						>
+						<span
+							@click="setCurrentTab('signup')"
+							:class="{
+								'bg-primary text-white': currentTab === 'signup',
+							}"
+							class="w-1/2 flex items-center justify-center h-full text-2xl font-medium cursor-pointer"
+							>Create Account</span
+						>
 					</div>
-				</Teleport>
+					<LoginForm :currentTab="currentTab" @close="close" />
+					<SignupForm :currentTab="currentTab" @signedup="close" />
+				</div>
 			</div>
 		</Teleport>
 	</div>
