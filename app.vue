@@ -34,6 +34,10 @@ const type = computed(() => {
 
 const isLoggedIn = computed(() => auth.isLoggedIn);
 
+onMounted(() => {
+	console.log(isLoggedIn);
+});
+
 watch(
 	query,
 	(newValue) => {
