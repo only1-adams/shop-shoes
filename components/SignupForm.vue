@@ -3,8 +3,9 @@
 		@submit.prevent="signupUser"
 		v-show="currentTab === 'signup'"
 		:class="isPending && 'opacity-5'"
-		class="flex mt-12 flex-col gap-y-8"
+		class="flex mt-12 flex-col gap-y-8 relative"
 	>
+		<LoadingOverlay v-if="isPending" />
 		<div class="flex flex-col gap-y-6">
 			<label for="login_email" class="text-2xl font-medium text-customBlack"
 				>Full Name</label
