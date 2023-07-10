@@ -75,6 +75,8 @@ if (data.value) {
 	});
 }
 
+console.log(headers)
+
 const totalItemsInCart = computed(() => {
 	return store.userCart.items.length;
 });
