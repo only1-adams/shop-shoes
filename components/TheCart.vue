@@ -65,8 +65,11 @@ const { data, refresh } = await useFetch(
 				store.cartWasUpdated = false;
 			}
 		},
-		onRequest: () => {
-			console.log(headers)
+		onRequest: ({ request, options }) => {
+			if (process.server) {
+				options.headers = headers;
+				console.log(headers);
+			}
 		},
 	}
 );
