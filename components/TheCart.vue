@@ -41,12 +41,13 @@
 import cartStore from "~/store/cart-store";
 import authStore from "~/store/auth-store";
 
+const headers = useRequestHeaders(["cookie"]);
+
 const props = defineProps(["iconStrokeColor"]);
 
 const store = cartStore();
 const auth = authStore();
 const config = useRuntimeConfig();
-const headers = useRequestHeaders(["cookie"]);
 
 const { isOpen, toggle, close } = useToggler();
 useBodyOverflow(isOpen);
@@ -65,12 +66,7 @@ const { data, refresh } = await useFetch(
 				store.cartWasUpdated = false;
 			}
 		},
-		onRequest: ({ request, options }) => {
-			if (process.server) {
-				options.headers = headers;
-				console.log(headers);
-			}
-		},
+		server: false,
 	}
 );
 
