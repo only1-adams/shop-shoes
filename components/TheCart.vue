@@ -65,6 +65,9 @@ const { data, refresh } = await useFetch(
 				store.cartWasUpdated = false;
 			}
 		},
+		onRequest: () => {
+			console.log(headers)
+		},
 	}
 );
 
@@ -74,8 +77,6 @@ if (data.value) {
 		state.userCart.totalAmount = data.value.userCart.totalAmount;
 	});
 }
-
-console.log(headers)
 
 const totalItemsInCart = computed(() => {
 	return store.userCart.items.length;
