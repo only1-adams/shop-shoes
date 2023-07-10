@@ -58,24 +58,21 @@ const { data, refresh } = await useFetch(
 		credentials: "include",
 		headers: headers,
 		onResponse: ({ response }) => {
-			if (store.cartWasUpdated) {
-				store.$patch((state) => {
-					state.userCart.items = response._data.userCart.items;
-					state.userCart.totalAmount = response._data.userCart.totalAmount;
-				});
-				store.cartWasUpdated = false;
-			}
+			store.$patch((state) => {
+				state.userCart.items = response._data.userCart.items;
+				state.userCart.totalAmount = response._data.userCart.totalAmount;
+			});
 		},
 		server: false,
 	}
 );
 
-if (data.value) {
-	store.$patch((state) => {
-		state.userCart.items = data.value.userCart.items;
-		state.userCart.totalAmount = data.value.userCart.totalAmount;
-	});
-}
+// if (data.value) {
+// 	store.$patch((state) => {
+// 		state.userCart.items = data.value.userCart.items;
+// 		state.userCart.totalAmount = data.value.userCart.totalAmount;
+// 	});
+// }
 
 const totalItemsInCart = computed(() => {
 	return store.userCart.items.length;
