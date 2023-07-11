@@ -31,7 +31,9 @@
 				}"
 				class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
 			>
-				<CartContent @close="close" :isOpen="isOpen" />
+				<Teleport to="body">
+					<CartContent @close="close" :isOpen="isOpen" />
+				</Teleport>
 			</div>
 		</Teleport>
 	</div>

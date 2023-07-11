@@ -12,12 +12,12 @@
 			<TheSideMenu />
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="isLoggedIn" />
-				<TheCart icon-stroke-color="white" />
-				<!-- <TheAccountDropdown
+				<TheCart @click="logValue" icon-stroke-color="white" />
+				<TheAccountDropdown
 					v-show="isLoggedIn"
 					v-if="isLoggedIn"
 					icon-stroke-color="white"
-				/> -->
+				/>
 				<NotAuthAccountDropdown v-if="!isLoggedIn" icon-stroke-color="white" />
 			</div>
 		</div>
@@ -27,4 +27,8 @@
 import authStore from "~/store/auth-store";
 const store = authStore();
 const isLoggedIn = computed(() => store.isLoggedIn);
+
+function logValue() {
+	console.log(isLoggedIn.value);
+}
 </script>
