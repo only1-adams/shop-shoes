@@ -10,7 +10,7 @@
 			>
 				<path
 					d="M11.9998 5C11.9998 7.07107 10.3209 8.75 8.24984 8.75C6.17877 8.75 4.49984 7.07107 4.49984 5C4.49984 2.92893 6.17877 1.25 8.24984 1.25C10.3209 1.25 11.9998 2.92893 11.9998 5Z"
-					stroke="white"
+					:stroke="props.iconStrokeColor"
 					stroke-width="1.5"
 					stroke-linecap="round"
 					stroke-linejoin="round"
@@ -79,7 +79,6 @@ const dropdownContainerRef = ref(null);
 onClickOutside(dropdownContainerRef, () => {
 	close();
 });
-
 
 
 const store = authStore();
