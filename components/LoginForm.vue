@@ -97,11 +97,13 @@ async function loginUser() {
 		root.displayPopup("You are now logged in", "success");
 		emit("close");
 
-		if (data.role !== "admin") {
-			cart.cartWasUpdated = true;
-		} else {
-			await navigateTo("/mgr");
-		}
+		// if (data.role !== "admin") {
+
+		// } else {
+		// 	await navigateTo("/mgr");
+		// }
+
+		cart.cartWasUpdated = true;
 	} catch (error) {
 		isPending.value = false;
 		const message = error.message;
