@@ -5,6 +5,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
 	const config = useRuntimeConfig();
 	const headers = useRequestHeaders(["cookie"]);
+	console.log(headers);
 	const auth = authStore();
 
 	let hasError = false;

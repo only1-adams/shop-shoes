@@ -192,4 +192,4 @@ watch(cartItems, async (newValue) => {
 		setEstimatedTotal();
 	}
 });
-</script>
+</script> 
