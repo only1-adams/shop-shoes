@@ -13,11 +13,11 @@
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="store.isLoggedIn" />
 				<TheCart @click="logValue" icon-stroke-color="white" />
-				<TheAccountDropdown
-					v-if="isLoggedIn"
+				<TheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
+				<NotAuthAccountDropdown
+					v-if="!store.isLoggedIn"
 					icon-stroke-color="white"
 				/>
-				<NotAuthAccountDropdown v-if="!store.isLoggedIn" icon-stroke-color="white" />
 			</div>
 		</div>
 	</header>
@@ -26,7 +26,7 @@
 <script setup>
 import authStore from "~/store/auth-store";
 const store = authStore();
-const isLoggedIn = computed(() => store.isLoggedIn);
+const isLoggedIn = ref(false);
 
 function logValue() {
 	console.log(isLoggedIn.value);
