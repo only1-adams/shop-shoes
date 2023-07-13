@@ -14,10 +14,7 @@
 				<SearchInputForm v-if="isLoggedIn" />
 				<TheCart @click="logValue" icon-stroke-color="white" />
 				<TheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
-				<NotAuthAccountDropdown
-					v-if="!isLoggedIn"
-					icon-stroke-color="white"
-				/>
+				<NotAuthAccountDropdown v-if="!isLoggedIn" icon-stroke-color="white" />
 			</div>
 		</div>
 	</header>
@@ -26,9 +23,21 @@
 <script setup>
 import authStore from "~/store/auth-store";
 const store = authStore();
-const isLoggedIn = ref(true);
+const isLoggedIn = ref(false);
+
+const storeIsLoggedIn = computed(() => store.isLoggedIn);
 
 function logValue() {
 	console.log(isLoggedIn.value);
 }
+
+watch(
+	storeIsLoggedIn,
+	(newValue) => {
+		if (newValue) {
+			isLoggedIn.value = newValue;
+		}
+	},
+	{ immediate: true }
+);
 </script>
