@@ -1,36 +1,32 @@
-import { createPinia } from "pinia";
 import authStore from "~/store/auth-store";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-	const nuxtApp = useNuxtApp();
-	if (process.server) {
-		nuxtApp.vueApp.use(createPinia());
-	}
+	await useAsyncData("authmw", async (nuxtApp) => {
+		await nuxtApp.callHook("page:start");
 
-	await nuxtApp.callHook("page:start");
+		const config = useRuntimeConfig();
+		const headers = useRequestHeaders(["cookie"]);
+		const auth = authStore($pinia);
 
-	const config = useRuntimeConfig();
-	const headers = useRequestHeaders(["cookie"]);
-	const auth = authStore();
+		let hasError = false;
+		const url = process.server
+			? process.env.ENDPOINT_URL
+			: config.public.ENDPOINT_URL;
 
-	let hasError = false;
-	const url = process.server
-		? process.env.ENDPOINT_URL
-		: config.public.ENDPOINT_URL;
+		try {
+			await auth.getCsrfToken(url, headers);
+		} catch (error) {
+			hasError = true;
+		}
 
-	try {
-		await auth.getCsrfToken(url, headers);
-	} catch (error) {
-		hasError = true;
-	}
+		console.log(auth.isLoggedIn);
 
-	console.log(auth.isLoggedIn);
+		if (hasError) {
+			await auth.logUserOut(url, headers);
+		}
 
-	if (hasError) {
-		await auth.logUserOut(url, headers);
-	}
-
-	if (hasError && to.meta.requiresAuth) {
-		return await navigateTo("/?auth=false");
-	}
+		if (hasError && to.meta.requiresAuth) {
+			return await navigateTo("/?auth=false");
+		}
+	});
 });

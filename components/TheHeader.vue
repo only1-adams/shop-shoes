@@ -34,9 +34,7 @@ function logValue() {
 watch(
 	storeIsLoggedIn,
 	(newValue) => {
-		if (newValue) {
-			isLoggedIn.value = newValue;
-		}
+		isLoggedIn.value = newValue;
 	},
 	{ immediate: true }
 );
