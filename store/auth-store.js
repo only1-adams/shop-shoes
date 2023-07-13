@@ -11,6 +11,8 @@ const authStore = defineStore("authStore", () => {
 		message: ref(""),
 	};
 
+	const testMessage = ref("");
+
 	const showError = computed(() => {
 		return error.show.value;
 	});
@@ -38,9 +40,11 @@ const authStore = defineStore("authStore", () => {
 			credentials: "include",
 			headers: { ...headers },
 		});
+
 		if (!response.ok) {
 			throw new Error();
 		}
+
 		const data = await response.json();
 
 		csrf.value = String(data.csrfToken);
@@ -75,6 +79,7 @@ const authStore = defineStore("authStore", () => {
 		getCsrfToken,
 		logUserOut,
 		role,
+		testMessage,
 	};
 });
 

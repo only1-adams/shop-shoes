@@ -31,12 +31,7 @@ function logValue() {
 	console.log(isLoggedIn.value);
 }
 
-watch(
-	storeIsLoggedIn,
-	(newValue) => {
-		console.log(newValue);
-		isLoggedIn.value = newValue;
-	},
-	{ immediate: true }
-);
+watchEffect(() => {
+	isLoggedIn.value = storeIsLoggedIn.value;
+});
 </script>
