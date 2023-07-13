@@ -5,7 +5,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
 	const config = useRuntimeConfig();
 	const headers = useRequestHeaders(["cookie"]);
-	console.log(headers);
 	const auth = authStore();
 
 	let hasError = false;
@@ -18,6 +17,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 	} catch (error) {
 		hasError = true;
 	}
+
+	console.log(auth.isLoggedIn);
 
 	if (hasError) {
 		await auth.logUserOut(url, headers);

@@ -22,7 +22,7 @@
 				/>
 			</svg>
 		</button>
-		<Teleport to="__nuxt">
+		<Teleport to="body">
 			<div
 				@click="close"
 				:class="{
@@ -31,7 +31,7 @@
 				}"
 				class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
 			>
-				<Teleport to="__nuxt">
+				<Teleport to="body">
 					<CartContent @close="close" :isOpen="isOpen" />
 				</Teleport>
 			</div>
