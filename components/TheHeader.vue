@@ -11,11 +11,11 @@
 			</NuxtLink>
 			<TheSideMenu />
 			<div class="hidden lg:flex items-center gap-x-16">
-				<SearchInputForm v-if="store.isLoggedIn" />
+				<SearchInputForm v-if="isLoggedIn" />
 				<TheCart @click="logValue" icon-stroke-color="white" />
 				<TheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
 				<NotAuthAccountDropdown
-					v-if="!store.isLoggedIn"
+					v-if="!isLoggedIn"
 					icon-stroke-color="white"
 				/>
 			</div>
@@ -26,7 +26,7 @@
 <script setup>
 import authStore from "~/store/auth-store";
 const store = authStore();
-const isLoggedIn = ref(false);
+const isLoggedIn = ref(true);
 
 function logValue() {
 	console.log(isLoggedIn.value);
