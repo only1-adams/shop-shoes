@@ -19,8 +19,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 			hasError = true;
 		}
 
-		console.log(auth.isLoggedIn);
-
 		if (hasError) {
 			await auth.logUserOut(url, headers);
 		}
