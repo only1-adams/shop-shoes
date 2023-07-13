@@ -1,6 +1,12 @@
+import { createPinia } from "pinia";
 import authStore from "~/store/auth-store";
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
 	const nuxtApp = useNuxtApp();
+	if (process.server) {
+		nuxtApp.vueApp.use(createPinia());
+	}
+
 	await nuxtApp.callHook("page:start");
 
 	const config = useRuntimeConfig();
