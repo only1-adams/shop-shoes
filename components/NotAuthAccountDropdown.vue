@@ -24,7 +24,7 @@
 				/>
 			</svg>
 		</span>
-		<Teleport to="#__nuxt">
+		<Teleport to="body">
 			<div
 				:class="{
 					'opacity-100 pointer-events-auto': isOpen,
