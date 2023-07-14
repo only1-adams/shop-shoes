@@ -21,5 +21,4 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 			await navigateTo("/?auth=false");
 		}
 	}
-	await nuxtApp.callHook("page:start");
 });
