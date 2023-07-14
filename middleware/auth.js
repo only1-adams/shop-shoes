@@ -5,7 +5,6 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 
 	const config = useRuntimeConfig();
 	const headers = useRequestHeaders(["cookie"]);
-	const isLoggedIn = useIsLoggedIn();
 
 	const auth = authStore();
 
@@ -16,8 +15,6 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 	try {
 		await auth.getCsrfToken(url, headers);
 		console.log(auth.isLoggedIn);
-		auth.testMessage = "working";
-		isLoggedIn.value = true;
 	} catch (error) {
 		await auth.logUserOut(url, headers);
 		if (to.meta.requiresAuth) {

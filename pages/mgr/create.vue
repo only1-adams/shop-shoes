@@ -8,11 +8,11 @@
 	</section>
 </template>
 <script setup>
-definePageMeta({
-	layout: "admin",
-	middleware: ["auth", "is-admin"],
-	requiresAuth: true,
-});
+// definePageMeta({
+// 	layout: "admin",
+// 	middleware: ["auth", "is-admin"],
+// 	requiresAuth: true,
+// });
 
 const isCreating = ref(false);
 </script>

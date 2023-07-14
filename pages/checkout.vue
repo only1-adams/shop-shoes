@@ -18,10 +18,10 @@ import cartStore from "~/store/cart-store";
 import authStore from "~/store/auth-store";
 import rootStore from "~/store/root-store";
 
-definePageMeta({
-	requiresAuth: true,
-	middleware: ["auth"],
-});
+// definePageMeta({
+// 	requiresAuth: true,
+// 	middleware: ["auth"],
+// });
 
 const config = useRuntimeConfig();
 const cart = cartStore();
