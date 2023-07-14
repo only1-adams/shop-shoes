@@ -12,13 +12,15 @@
 			<TheSideMenu />
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="isLoggedIn" />
-				<TheCart @click="logValue" icon-stroke-color="white" />
 				<ClientOnly>
-					<TheAccountDropdown v-if="newIsLoggedIn" icon-stroke-color="white" />
+					<TheCart @click="logValue" icon-stroke-color="white" />
+				</ClientOnly>
+				<ClientOnly>
+					<TheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
 				</ClientOnly>
 				<ClientOnly>
 					<NotAuthAccountDropdown
-						v-if="!newIsLoggedIn"
+						v-if="!isLoggedIn"
 						icon-stroke-color="white"
 					/>
 				</ClientOnly>
@@ -28,14 +30,11 @@
 </template>
 
 <script setup>
-import { storeToRefs } from "pinia";
 import authStore from "~/store/auth-store";
 const store = authStore();
 const isLoggedIn = ref(false);
-const newIsLoggedIn = useIsLoggedIn();
 
-// const storeIsLoggedIn = computed(() => store.isLoggedIn);
-const { isLoggedIn: storeIsLoggedIn } = storeToRefs(store);
+const storeIsLoggedIn = computed(() => store.isLoggedIn);
 
 function logValue() {
 	console.log(isLoggedIn.value);
