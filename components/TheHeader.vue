@@ -12,18 +12,12 @@
 			<TheSideMenu />
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="isLoggedIn" />
-				<ClientOnly fallback-tag="span" fallback="Loading comments...">
-					<TheCart @click="logValue" icon-stroke-color="white" />
-				</ClientOnly>
-				<ClientOnly  fallback-tag="span" fallback="Loading comments...">
-					<TheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
-				</ClientOnly>
-				<ClientOnly fallback-tag="span" fallback="Loading comments...">
-					<NotAuthAccountDropdown
-						v-if="!isLoggedIn"
-						icon-stroke-color="white"
-					/>
-				</ClientOnly>
+				<TheCart @click="logValue" icon-stroke-color="white" />
+				<LazyTheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
+				<LazyNotAuthAccountDropdown
+					v-if="!isLoggedIn"
+					icon-stroke-color="white"
+				/>
 			</div>
 		</div>
 	</header>
