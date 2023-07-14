@@ -1,6 +1,6 @@
 <template>
 	<header class="top-0 fixed w-full z-[2]">
-		<!-- <TheCountdown /> -->
+		
 		<div
 			class="h-[8.5rem] bg-secondary flex items-center justify-between px-8 md:px-[5rem]"
 		>
@@ -12,7 +12,7 @@
 			<TheSideMenu />
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="isLoggedIn" />
-				<TheCart @click="logValue" icon-stroke-color="white" />
+				<TheCart icon-stroke-color="white" />
 				<LazyTheAccountDropdown v-if="isLoggedIn" icon-stroke-color="white" />
 				<LazyNotAuthAccountDropdown
 					v-if="!isLoggedIn"
@@ -29,10 +29,6 @@ const store = authStore();
 const isLoggedIn = ref(false);
 
 const storeIsLoggedIn = computed(() => store.isLoggedIn);
-
-function logValue() {
-	console.log(isLoggedIn.value);
-}
 
 watchEffect(() => {
 	isLoggedIn.value = storeIsLoggedIn.value;
