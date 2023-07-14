@@ -20,10 +20,10 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 			} catch (error) {
 				await auth.logUserOut(url, headers);
 				if (to.meta.requiresAuth) {
-					return await navigateTo("/?auth=false");
+					await navigateTo("/?auth=false");
 				}
 			}
-		});
+		}); 
 	});
 	await nuxtApp.callHook("page:start");
 });

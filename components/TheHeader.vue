@@ -21,11 +21,13 @@
 </template>
 
 <script setup>
+import { storeToRefs } from "pinia";
 import authStore from "~/store/auth-store";
 const store = authStore();
 const isLoggedIn = ref(false);
 
-const storeIsLoggedIn = computed(() => store.isLoggedIn);
+// const storeIsLoggedIn = computed(() => store.isLoggedIn);
+const { isLoggedIn: storeIsLoggedIn } = storeToRefs(store);
 
 function logValue() {
 	console.log(isLoggedIn.value);
