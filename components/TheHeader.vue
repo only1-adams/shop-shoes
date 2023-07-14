@@ -13,11 +13,15 @@
 			<div class="hidden lg:flex items-center gap-x-16">
 				<SearchInputForm v-if="isLoggedIn" />
 				<TheCart @click="logValue" icon-stroke-color="white" />
-				<TheAccountDropdown v-if="newIsLoggedIn" icon-stroke-color="white" />
-				<NotAuthAccountDropdown
-					v-if="!newIsLoggedIn"
-					icon-stroke-color="white"
-				/>
+				<ClientOnly>
+					<TheAccountDropdown v-if="newIsLoggedIn" icon-stroke-color="white" />
+				</ClientOnly>
+				<ClientOnly>
+					<NotAuthAccountDropdown
+						v-if="!newIsLoggedIn"
+						icon-stroke-color="white"
+					/>
+				</ClientOnly>
 			</div>
 		</div>
 	</header>
