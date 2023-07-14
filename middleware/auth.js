@@ -2,6 +2,7 @@ import authStore from "~/store/auth-store";
 
 export default defineNuxtRouteMiddleware(async (to, _) => {
 	const nuxtApp = useNuxtApp();
+	await nuxtApp.callHook("page:start");
 	await useAsyncData("authMiddleware", async () => {
 		const config = useRuntimeConfig();
 		const headers = useRequestHeaders(["cookie"]);
@@ -23,5 +24,4 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 			}
 		}
 	});
-	await nuxtApp.callHook("page:start");
 });
