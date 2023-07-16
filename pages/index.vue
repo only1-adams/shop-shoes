@@ -7,9 +7,9 @@
 <script setup>
 import authStore from "~/store/auth-store";
 
-// definePageMeta({
-// 	middleware: ["auth"],
-// });
+definePageMeta({
+	middleware: ["auth"],
+});
 
 const config = useRuntimeConfig();
 const store = authStore();

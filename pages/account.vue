@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-// definePageMeta({
-// 	middleware: ["auth"],
-// });
+definePageMeta({
+	middleware: ["auth"],
+});
 </script>
