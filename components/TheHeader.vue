@@ -1,25 +1,27 @@
 <template>
-	<header class="top-0 fixed w-full z-[2]">
-		<div
-			class="h-[8.5rem] bg-secondary flex items-center justify-between px-8 md:px-[5rem]"
-		>
-			<NuxtLink :to="{ path: '/' }">
-				<div class="flex items-center gap-x-5">
-					<img src="/images/stayfabLogo.png" alt="stayfab logo" />
+	<ClientOnly>
+		<header class="top-0 fixed w-full z-[2]">
+			<div
+				class="h-[8.5rem] bg-secondary flex items-center justify-between px-8 md:px-[5rem]"
+			>
+				<NuxtLink :to="{ path: '/' }">
+					<div class="flex items-center gap-x-5">
+						<img src="/images/stayfabLogo.png" alt="stayfab logo" />
+					</div>
+				</NuxtLink>
+				<TheSideMenu />
+				<div class="hidden lg:flex items-center gap-x-16">
+					<SearchInputForm v-if="isLoggedIn" />
+					<TheCart icon-stroke-color="white" />
+					<TheAccountDropdown v-show="isLoggedIn" icon-stroke-color="white" />
+					<NotAuthAccountDropdown
+						v-show="!isLoggedIn"
+						icon-stroke-color="white"
+					/>
 				</div>
-			</NuxtLink>
-			<TheSideMenu />
-			<div class="hidden lg:flex items-center gap-x-16">
-				<SearchInputForm v-if="isLoggedIn" />
-				<TheCart icon-stroke-color="white" />
-				<TheAccountDropdown v-show="isLoggedIn" icon-stroke-color="white" />
-				<NotAuthAccountDropdown
-					v-show="!isLoggedIn"
-					icon-stroke-color="white"
-				/>
 			</div>
-		</div>
-	</header>
+		</header>
+	</ClientOnly>
 </template>
 
 <script setup>
