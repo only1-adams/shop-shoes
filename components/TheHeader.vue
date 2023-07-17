@@ -1,5 +1,8 @@
 <template>
 	<ClientOnly>
+		<template #fallback>
+			<header class="top-0 fixed w-full z-[2] h-[8.5rem] bg-secondary"></header>
+		</template>
 		<header class="top-0 fixed w-full z-[2]">
 			<div
 				class="h-[8.5rem] bg-secondary flex items-center justify-between px-8 md:px-[5rem]"
