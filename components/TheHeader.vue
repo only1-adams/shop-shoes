@@ -29,6 +29,6 @@ const store = authStore();
 const isLoggedIn = computed(() => store.isLoggedIn);
 
 onMounted(() => {
-	console.log(isLoggedIn);
+	console.log(isLoggedIn.value);
 });
 </script>
