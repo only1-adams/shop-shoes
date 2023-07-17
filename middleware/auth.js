@@ -4,8 +4,8 @@ import { callWithNuxt } from "nuxt/app";
 export default defineNuxtRouteMiddleware(async (to, _) => {
 	const config = useRuntimeConfig();
 	const headers = useRequestHeaders(["cookie"]);
-
 	const auth = authStore();
+	const isLoggedIn = useState("isLoggedIn", () => false);
 
 	const url = process.server
 		? process.env.ENDPOINT_URL
@@ -13,11 +13,13 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 
 	try {
 		await auth.getCsrfToken(url, headers);
+		isLoggedIn.value = true;
 	} catch (error) {
 		await auth.logUserOut(url, headers);
+		isLoggedIn.value = false;
 	}
 
-	if (!auth.isLoggedIn && to.meta.requiresAuth) {
+	if (!isLoggedIn.value && to.meta.requiresAuth) {
 		return navigateTo("/?auth=false");
 	}
 });

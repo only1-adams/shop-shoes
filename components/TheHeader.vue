@@ -1,6 +1,5 @@
 <template>
 	<header class="top-0 fixed w-full z-[2]">
-		
 		<div
 			class="h-[8.5rem] bg-secondary flex items-center justify-between px-8 md:px-[5rem]"
 		>
@@ -26,11 +25,11 @@
 <script setup>
 import authStore from "~/store/auth-store";
 const store = authStore();
-const isLoggedIn = ref(false);
+const isLoggedIn = useState("isLoggedIn");
 
-const storeIsLoggedIn = computed(() => store.isLoggedIn);
+// const storeIsLoggedIn = computed(() => store.isLoggedIn);
 
-watchEffect(() => {
-	isLoggedIn.value = storeIsLoggedIn.value;
-});
+// watchEffect(() => {
+// 	isLoggedIn.value = storeIsLoggedIn.value;
+// });
 </script>
