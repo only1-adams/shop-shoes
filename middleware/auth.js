@@ -1,7 +1,7 @@
 import authStore from "~/store/auth-store";
 
 export default defineNuxtRouteMiddleware(async (to, _) => {
-	if (process.server) {
+	if (process.client) {
 		const config = useRuntimeConfig();
 		const headers = useRequestHeaders(["cookie"]);
 		const auth = authStore();

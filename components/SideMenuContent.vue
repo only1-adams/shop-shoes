@@ -53,7 +53,7 @@
 		<div class="mt-16">
 			<ul class="w-full flex flex-col items-center justify-center gap-y-6">
 				<template
-					v-for="(category, index) in categories.categories"
+					v-for="(category, index) in categories?.categories"
 					:key="category.title"
 				>
 					<li class="w-full border-b border-b-primary py-4">
