@@ -7,7 +7,7 @@
 	>
 		<LoadingOverlay v-if="isPending" />
 		<div class="flex flex-col gap-y-6">
-			<label for="login_email" class="text-2xl font-medium text-customBlack"
+			<label for="signup_name" class="text-2xl font-medium text-customBlack"
 				>Full Name</label
 			>
 			<div
@@ -16,6 +16,7 @@
 				<input
 					class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
 					type="text"
+					id="signup_name"
 					placeholder="Full Name"
 					v-model="signupData.name"
 				/>
@@ -30,7 +31,7 @@
 			</div>
 		</div>
 		<div class="flex flex-col gap-y-6">
-			<label for="login_email" class="text-2xl font-medium text-customBlack"
+			<label for="signup_email" class="text-2xl font-medium text-customBlack"
 				>Email Address</label
 			>
 			<div
@@ -39,6 +40,7 @@
 				<input
 					class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
 					type="email"
+					id="signup_email"
 					placeholder="Email Address"
 					v-model="signupData.email"
 				/>
@@ -53,7 +55,7 @@
 			</div>
 		</div>
 		<div class="flex flex-col gap-y-6">
-			<label for="login_email" class="text-2xl font-medium text-customBlack"
+			<label for="signup_phone" class="text-2xl font-medium text-customBlack"
 				>Phone number</label
 			>
 			<div
@@ -62,6 +64,7 @@
 				<input
 					class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
 					type="phone"
+					id="signup_phone"
 					placeholder="Phone Number"
 					v-model="signupData.phone"
 				/>
@@ -76,7 +79,7 @@
 			</div>
 		</div>
 		<div class="flex flex-col gap-y-6">
-			<label for="login_email" class="text-2xl font-medium text-customBlack"
+			<label for="signup_password" class="text-2xl font-medium text-customBlack"
 				>Password</label
 			>
 			<div
@@ -85,6 +88,7 @@
 				<input
 					class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
 					type="password"
+					id="signup_password"
 					placeholder="Password"
 					v-model="signupData.password"
 				/>
