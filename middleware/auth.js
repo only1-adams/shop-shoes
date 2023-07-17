@@ -1,4 +1,5 @@
 import authStore from "~/store/auth-store";
+import { callWithNuxt } from "nuxt/app";
 
 export default defineNuxtRouteMiddleware(async (to, _) => {
 	const config = useRuntimeConfig();
@@ -17,6 +18,6 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 	}
 
 	if (!auth.isLoggedIn && to.meta.requiresAuth) {
-		return await navigateTo("/?auth=false");
+		return callWithNuxt(nuxtApp, navigateTo, ["/?auth=false"]);
 	}
 });
