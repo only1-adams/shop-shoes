@@ -25,10 +25,13 @@
 <script setup>
 import authStore from "~/store/auth-store";
 const store = authStore();
+const auth = useAuth();
 
 const isLoggedIn = computed(() => store.isLoggedIn);
+const authValue = computed(() => auth.value);
 
 onMounted(() => {
 	console.log(isLoggedIn.value);
+	console.log(authValue.value);
 });
 </script>
