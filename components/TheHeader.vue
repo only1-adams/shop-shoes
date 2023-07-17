@@ -25,11 +25,10 @@
 <script setup>
 import authStore from "~/store/auth-store";
 const store = authStore();
-const isLoggedIn = useState("isLoggedIn");
 
-// const storeIsLoggedIn = computed(() => store.isLoggedIn);
+onMounted(() => {
+	console.log(store.isLoggedIn);
+});
 
-// watchEffect(() => {
-// 	isLoggedIn.value = storeIsLoggedIn.value;
-// });
+const isLoggedIn = computed(() => store.isLoggedIn);
 </script>

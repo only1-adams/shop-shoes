@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 		"@vueuse/nuxt",
 		"@nuxt/image-edge",
 		"@pinia/nuxt",
+		
 	],
 
 	app: {
