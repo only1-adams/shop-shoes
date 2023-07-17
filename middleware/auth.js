@@ -18,7 +18,7 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 			await auth.logUserOut(url, headers);
 			authValue.value = false;
 		}
-
+		console.log(headers);
 		console.log(auth.isLoggedIn, authValue.value, "middleware");
 
 		if (!auth.isLoggedIn && to.meta.requiresAuth) {
