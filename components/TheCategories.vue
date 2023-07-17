@@ -4,7 +4,7 @@
 			class="flex items-center justify-center gap-x-10 text-[1.7rem] font-semibold text-white"
 		>
 			<template
-				v-for="(category, index) in categories.categories"
+				v-for="(category, index) in categories?.categories"
 				:key="category.title"
 			>
 				<TheCategoryItem :title="category.title" />
