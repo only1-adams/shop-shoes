@@ -2,6 +2,7 @@ import authStore from "~/store/auth-store";
 import { callWithNuxt } from "nuxt/app";
 
 export default defineNuxtRouteMiddleware(async (to, _) => {
+	const nuxtApp = useNuxtApp();
 	const config = useRuntimeConfig();
 	const headers = useRequestHeaders(["cookie"]);
 	const auth = authStore();
@@ -12,7 +13,6 @@ export default defineNuxtRouteMiddleware(async (to, _) => {
 
 	try {
 		await auth.getCsrfToken(url, headers);
-		console.log(auth.isLoggedIn, "middleware");
 	} catch (error) {
 		await auth.logUserOut(url, headers);
 	}
