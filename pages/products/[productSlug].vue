@@ -117,10 +117,7 @@
 							</button>
 						</form>
 					</div>
-					<span
-						class="flex mt-10 text-customBlack font-medium underline text-2xl cursor-pointer"
-						>Submit Review</span
-					>
+					<ReviewModal :product-id="product._id" />
 				</div>
 			</div>
 		</section>
