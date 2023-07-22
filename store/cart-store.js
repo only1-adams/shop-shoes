@@ -25,7 +25,7 @@ const cartStore = defineStore("user-cart", () => {
 			throw new Error("An error occurred while adding the product");
 		}
 
-		return responseData.message;
+		return responseData;
 	}
 
 	return {

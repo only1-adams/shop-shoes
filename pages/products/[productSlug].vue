@@ -111,7 +111,7 @@
 							<button
 								v-if="!productInCart"
 								type="submit"
-								class="w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack bg-customBlack text-[2rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
+								class="rounded-lg w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack bg-customBlack text-[2rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
 							>
 								Add to bag
 							</button>
@@ -120,20 +120,6 @@
 					<ReviewModal :product-id="product._id" />
 				</div>
 			</div>
-		</section>
-		<section class="py-12 bg-primaryLight px-8 md:px-[5rem]">
-			<p
-				class="text-[1.7rem] md:text-[2.5rem] lg:text-[3rem] font-semibold text-secondary"
-			>
-				Similar Products
-			</p>
-			<!-- <div class="overflow-auto w-full">
-				<div class="mt-12 grid grid-cols-3 gap-10 w-max lg:w-full">
-					<ProductCard :product="{ slug: 'bala' }" />
-					<ProductCard :product="{ slug: 'bala' }" />
-					<ProductCard :product="{ slug: 'bala' }" />
-				</div>
-			</div> -->
 		</section>
 	</div>
 </template>
@@ -203,13 +189,13 @@ async function updateCart(action) {
 	try {
 		if (auth.isLoggedIn) {
 			isUpdatingCart.value = true;
-			const successMessage = await cart.addToCart(
+			const response = await cart.addToCart(
 				`${config.public.ENDPOINT_URL}`,
 				product.value._id,
 				action,
 				auth.csrf
 			);
-			root.displayPopup(successMessage, "success");
+			root.displayPopup(response.message, "success");
 			isUpdatingCart.value = false;
 			cart.cartWasUpdated = true;
 		}

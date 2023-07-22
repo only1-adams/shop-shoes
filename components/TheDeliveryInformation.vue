@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full flex flex-col gap-y-7">
 		<p class="text-[2rem] font-semibold text-secondary">Delivery Information</p>
-		<form class="w-full bg-white p-8">
+		<form class="w-full bg-white p-8 rounded-lg">
 			<div class="flex justify-between gap-x-8 mb-10 last:mb-0">
 				<div class="flex grow flex-col gap-y-6">
 					<label

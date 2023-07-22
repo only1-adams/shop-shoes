@@ -52,7 +52,7 @@
 				</NuxtLink>
 				<TheSideMenu />
 				<div class="hidden lg:flex items-center gap-x-16">
-					<SearchInputForm v-if="isLoggedIn" />
+					<!-- <SearchInputForm v-if="isLoggedIn" /> -->
 					<TheCart icon-stroke-color="white" />
 					<TheAccountDropdown v-show="isLoggedIn" icon-stroke-color="white" />
 					<NotAuthAccountDropdown

@@ -4,7 +4,7 @@
 	>
 		<div class="w-full md:w-[80%] lg:w-1/2">
 			<p class="text-[2rem] font-semibold text-customBlack">Sign In Info</p>
-			<div class="mt-7 bg-primaryLight p-8">
+			<div class="mt-7 bg-primaryLight p-8 rounded-lg">
 				<form action="" class="flex mt-12 flex-col gap-y-8">
 					<div class="flex flex-col gap-y-6">
 						<label
@@ -48,7 +48,7 @@
 					</div>
 					<div>
 						<button
-							class="w-full outline-none border-none flex items-center justify-center bg-secondary text-white text-2xl font-medium py-6"
+							class="rounded-lg w-full outline-none border-none flex items-center justify-center bg-secondary text-white text-2xl font-medium py-6"
 						>
 							Edit
 						</button>
@@ -58,7 +58,7 @@
 		</div>
 		<div class="w-full md:w-[80%] lg:w-1/2">
 			<p class="text-[2rem] font-semibold text-customBlack">Personal Info</p>
-			<div class="mt-7 bg-primaryLight p-8">
+			<div class="mt-7 bg-primaryLight p-8 rounded-lg">
 				<form action="" class="flex mt-12 flex-col gap-y-8">
 					<div class="flex flex-col gap-y-6">
 						<label
@@ -102,7 +102,7 @@
 					</div>
 					<div>
 						<button
-							class="w-full outline-none border-none flex items-center justify-center bg-secondary text-white text-2xl font-medium py-6"
+							class="rounded-lg w-full outline-none border-none flex items-center justify-center bg-secondary text-white text-2xl font-medium py-6"
 						>
 							Edit
 						</button>
@@ -115,6 +115,7 @@
 <script setup>
 import profileStore from "~/store/profile-store";
 import authStore from "~/store/auth-store";
+
 const config = useRuntimeConfig();
 const headers = useRequestHeaders(["cookie"]);
 const store = profileStore();

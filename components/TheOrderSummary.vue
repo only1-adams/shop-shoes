@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full flex flex-col gap-y-7">
 		<p class="text-[2rem] font-semibold text-secondary">Order Summary</p>
-		<div class="bg-white p-8 flex flex-col gap-y-7">
+		<div class="bg-white p-8 flex flex-col gap-y-7 rounded-lg">
 			<div class="flex flex-col gap-y-7">
 				<template v-for="(item, index) in cartItems" :key="index">
 					<div class="flex gap-x-7 pb-5">
@@ -26,7 +26,7 @@
 					</div>
 				</template>
 			</div>
-			<div class="border-t-[1.5px] border-t-primary py-8">
+			<div class="border-t-[1.5px] border-t-primary py-8 rounded-lg">
 				<p class="flex items-center justify-between">
 					<span class="text-customBlack font-bold text-[1.7rem]"
 						>Estimated Total</span
@@ -37,7 +37,7 @@
 				</p>
 				<button
 					@click="$emit('make-payment')"
-					class="mt-8 w-full flex items-center justify-center py-6 border-[1.5px] border-secondary bg-secondary text-[2rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
+					class="rounded-lg mt-8 w-full flex items-center justify-center py-6 border-[1.5px] border-secondary bg-secondary text-[2rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
 				>
 					Confirm Order
 				</button>

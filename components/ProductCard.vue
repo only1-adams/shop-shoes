@@ -29,7 +29,7 @@
 				<button
 					v-if="!isAdmin && !productInCart"
 					type="submit"
-					class="w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack text-[2rem] font-semibold text-customBlack transition-all duration-200 hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-80"
+					class="rounded-lg w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack text-[2rem] font-semibold text-customBlack transition-all duration-200 hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-80"
 					:disabled="isAddingToCart"
 					id="add-to-cart-btn"
 				>
@@ -39,14 +39,14 @@
 					v-if="!isAdmin && productInCart"
 					id="added-to-bag-display"
 					type="button"
-					class="w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack text-[2rem] bg-customBlack font-semibold text-white transition-all duration-200 pointer-events-none"
+					class="rounded-lg w-full flex items-center justify-center py-6 border-[1.5px] border-customBlack text-[2rem] bg-customBlack font-semibold text-white transition-all duration-200 pointer-events-none"
 				>
 					Added to bag
 				</button>
 				<button
 					v-if="isAdmin"
 					type="button"
-					class="w-full flex items-center justify-center py-6 border-[1.5px] text-customBlack border-customBlack text-[2rem] hover:bg-customBlack font-semibold hover:text-white transition-all duration-200"
+					class="rounded-lg w-full flex items-center justify-center py-6 border-[1.5px] text-customBlack border-customBlack text-[2rem] hover:bg-customBlack font-semibold hover:text-white transition-all duration-200"
 				>
 					Edit Product
 				</button>
@@ -70,31 +70,42 @@ const product = computed(() => props.product);
 const isAdmin = computed(() => props.isAdmin);
 
 const isAddingToCart = ref(false);
+const productInCart = ref(false);
 
 async function addProductToCart() {
 	try {
 		if (auth.isLoggedIn) {
 			isAddingToCart.value = true;
-			const successMessage = await cart.addToCart(
+			const response = await cart.addToCart(
 				`${config.public.ENDPOINT_URL}`,
 				product.value._id,
 				"add",
 				auth.csrf
 			);
-			root.displayPopup(successMessage, "success");
+
+			cart.$patch((state) => {
+				state.userCart.items = response.userCart.items;
+				state.userCart.totalAmount = response.userCart.totalAmount;
+			});
+
+			console.log(response);
+
+			root.displayPopup(response.message, "success");
+			productInCart.value = true;
 			isAddingToCart.value = false;
-			cart.cartWasUpdated = true;
+
+			// cart.cartWasUpdated = true;
 		}
 	} catch (error) {
 		root.displayPopup(error.message, "error");
 	}
 }
 
-const productInCart = computed(() => {
+watchEffect(() => {
 	const isInCart = cart.userCart.items.find((item) => {
 		return item.product._id === product.value._id;
 	});
 
-	return isInCart !== undefined;
+	productInCart.value = isInCart !== undefined;
 });
 </script>

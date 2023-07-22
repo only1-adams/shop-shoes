@@ -33,7 +33,7 @@
 				</p>
 				<a
 					href=""
-					class="mt-6 text-[1.7rem] lg:text-[2rem] font-semibold text-white bg-primary px-32 py-5 w-max flex items-center justify-center transition-all duration-200 hover:bg-secondary"
+					class="rounded-lg mt-6 text-[1.7rem] lg:text-[2rem] font-semibold text-white bg-primary px-32 py-5 w-max flex items-center justify-center transition-all duration-200 hover:bg-secondary"
 					>Shop Now</a
 				>
 			</div>

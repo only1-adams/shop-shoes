@@ -9,7 +9,7 @@
 			>
 			<a
 				href="blog-details.html"
-				class="px-12 py-5 border-[1.5px] border-secondary text-secondary text-2xl md:text-[1.7rem] transition-all duration-200 hover:border-primary hover:text-primary"
+				class="rounded-lg px-12 py-5 border-[1.5px] border-secondary text-secondary text-2xl md:text-[1.7rem] transition-all duration-200 hover:border-primary hover:text-primary"
 				>View all</a
 			>
 		</div>
