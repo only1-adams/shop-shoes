@@ -130,9 +130,9 @@ import authStore from "~/store/auth-store";
 import rootStore from "~/store/root-store";
 import LoadingSpinner from "~/components/LoadingSpinner.vue";
 
-definePageMeta({
-	middleware: ["auth"],
-});
+// definePageMeta({
+// 	middleware: ["auth"],
+// });
 
 const route = useRoute();
 const config = useRuntimeConfig();

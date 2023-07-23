@@ -10,8 +10,8 @@
 <script setup>
 definePageMeta({
 	layout: "admin",
-	middleware: ["auth", "is-admin"],
-	requiresAuth: true,
+	// middleware: ["auth", "is-admin"],
+	// requiresAuth: true,
 });
 
 const isCreating = ref(false);

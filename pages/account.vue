@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-definePageMeta({
-	requiresAuth: true,
-	middleware: ["auth"],
-});
+// definePageMeta({
+// 	requiresAuth: true,
+// 	middleware: ["auth"],
+// });
 </script>
