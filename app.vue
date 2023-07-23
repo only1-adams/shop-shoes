@@ -34,7 +34,9 @@ const type = computed(() => {
 
 const isLoggedIn = computed(() => auth.isLoggedIn);
 
-
+onMounted(() => {
+	store.displayPopup("You have been automatically logged in.", "success");
+});
 
 watch(
 	query,

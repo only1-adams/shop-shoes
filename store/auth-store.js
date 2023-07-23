@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 
 const authStore = defineStore("authStore", () => {
-	const isLoggedIn = ref(false);
+	const isLoggedIn = ref(true);
 	const expiresIn = ref(null);
 	const role = ref(null);
 	const csrf = ref(null);
